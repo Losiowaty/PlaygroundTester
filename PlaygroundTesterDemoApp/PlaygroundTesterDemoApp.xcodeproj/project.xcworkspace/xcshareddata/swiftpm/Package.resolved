@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Difference",
+        "repositoryURL": "https://github.com/krzysztofzablocki/Difference.git",
+        "state": {
+          "branch": "master",
+          "revision": "02fe1111edc8318c4f8a0da96336fcbcc201f38b",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -16,7 +16,7 @@ let package = Package(
             targets: ["PlaygroundTester"]),
     ],
     dependencies: [
-      .package(name: "Difference", url: "https://github.com/krzysztofzablocki/Difference.git", .branch("master")),
+      .package(url: "https://github.com/krzysztofzablocki/Difference", .exact("1.0.1"))
     ],
     targets: [
       // Targets are the basic building blocks of a package. A target can define a module or a test suite.

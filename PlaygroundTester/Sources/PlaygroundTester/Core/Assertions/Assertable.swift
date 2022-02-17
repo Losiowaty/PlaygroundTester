@@ -1,6 +1,7 @@
+import Foundation
+
 #if TESTING_ENABLED
 
-import Foundation
 import Difference
 
 extension StaticString {
@@ -127,5 +128,25 @@ public func AssertExpectations(_ expectations: [Expectation], timeout: TimeInter
 
   dispatchGroup.wait()
 }
+
+#else
+enum ProductionError: Error {
+  case assertingOnProduction
+}
+
+public func AssertUnwrap<T>(_ value: T?, message: String = "", file: StaticString = #file, line: UInt = #line) throws -> T {
+  guard let value = value else {
+    throw ProductionError.assertingOnProduction
+  }
+  return value
+}
+
+public func Assert(_ value: Bool, message: String = "", file: StaticString = #file, line: UInt = #line) {}
+public func AssertFalse(_ value: Bool, message: String = "", file: StaticString = #file, line: UInt = #line) {}
+public func AssertEqual<T: Equatable>(_ value: T, other: T, message: String = "", file: StaticString = #file, line: UInt = #line) {}
+public func AssertNotEqual<T: Equatable>(_ value: T, other: T, message: String = "", file: StaticString = #file, line: UInt = #line) {}
+public func AssertNil<T>(_ value: T?, message: String = "", file: StaticString = #file, line: UInt = #line) {}
+public func AssertNotNil<T>(_ value: T?, message: String = "", file: StaticString = #file, line: UInt = #line) {}
+public func AssertExpectations(_ expectations: [Expectation], timeout: TimeInterval) {}
 
 #endif

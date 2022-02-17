@@ -70,4 +70,16 @@ final public class Expectation {
   }
 }
 
+#else
+
+final public class Expectation {
+  public var assertOnOverFulfilment: Bool = true
+  public var expectedFulfilmentCount: UInt = 1
+  public var inverted = false
+
+  public init(name: String, file: StaticString = #file, line: UInt = #line) {}
+
+  public func fulfill() {}
+}
+
 #endif

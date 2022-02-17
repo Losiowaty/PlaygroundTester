@@ -10,42 +10,6 @@ Just add `PlaygroundTester` package to the project as you normally would.
 
 ## Usage
 
-### Patching `Package.swift`
-Since Swift Playgrounds don't support multiple targets at this time, we need to keep test source files alongside regular application code. In order to avoid including testing code in a release build of the app, `PlaygroundTester` has it's entire code between conditional compliation flags :
-```swift
-#if TESTING_ENABLED
-// code
-#endif
-```
-
-Since the base class for tests is also treated like that you also need to wrap your tests in this manner.
-Unfortunatelly, the `DEBUG` flag available by default in Xcode is not present in Swift Playgrounds, and there is no way to add them via UI.
-
-For now you'll need to follow these steps to add a compilation flag to your project :
-1. Send the app project to a Mac (for example via AirDrop)
-2. Open the package contents (right click -> Show Package Contents)
-3. Open `Package.swift` file
-4. This file should contain a single `.executableTarget` definition.
-5. Add this argument to the target : `swiftSettings: [.define("TESTING_ENABLED", .when(configuration: .debug))]`
-6. Save the file and share the app back to your iPad.
-
-In the end the target definition should look similar to this :
-```swift
-targets: [
-        .executableTarget(
-            name: "AppModule",
-            dependencies: [
-              // if any
-            ],
-            path: ".",
-            swiftSettings: [.define("TESTING_ENABLED", .when(configuration: .debug))]
-        )
-    ]
-```
-You can of course choose any name for the flag.
-
-NOTE : I hope to automate this process in [Patching Package.swift](https://github.com/Losiowaty/PlaygroundTester/issues/11)
-
 ### Adding tests
 For `PlaygroundTester` to find and properly execute tests your test class needs to :
 1. Inherit from `TestCase`
@@ -182,6 +146,39 @@ After that when running the app either in fullscreen or in preview mode will ins
 After the tests are run, you can navigate them to inspect their results and see which assertions failed.
 
 https://user-images.githubusercontent.com/4209155/154171145-2387477e-a665-4991-b63e-3f2dfe3cad73.mp4
+
+## Patching `Package.swift`
+Swift Playgrounds doesn't support multiple targets at this time, so your test files will need to be kept alongside regular application code.
+The package itself has compilation guards around its code, so that when creating a release build most of it will be omitted from you production app.
+What is left is the minimal set of object and function definitions, so that your code compiles just fine, and all calls to `PlaygroundTester` provided
+objects/functions resolves to basically no-ops.
+
+If you'd like to also discard your tests from release builds, you'll need to add a compilation flag to your app.
+
+For now you'll need to follow these steps to add a compilation flag to your project :
+1. Send the app project to a Mac (for example via AirDrop)
+2. Open the package contents (right click -> Show Package Contents)
+3. Open `Package.swift` file
+4. This file should contain a single `.executableTarget` definition.
+5. Add this argument to the target : `swiftSettings: [.define("TESTING_ENABLED", .when(configuration: .debug))]`
+6. Save the file and share the app back to your iPad.
+
+In the end the target definition should look similar to this :
+```swift
+targets: [
+        .executableTarget(
+            name: "AppModule",
+            dependencies: [
+              // if any
+            ],
+            path: ".",
+            swiftSettings: [.define("TESTING_ENABLED", .when(configuration: .debug))]
+        )
+    ]
+```
+You can of course choose any name for the flag.
+
+NOTE : I hope to automate this process in [Patching Package.swift](https://github.com/Losiowaty/PlaygroundTester/issues/11)
 
 ## Supported features
 - Automatic test discovery & execution

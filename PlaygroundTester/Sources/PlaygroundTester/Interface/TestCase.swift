@@ -1,5 +1,3 @@
-#if TESTING_ENABLED
-
 import Foundation
 
 // This class needs to be subclassed to provide test methods.
@@ -21,5 +19,3 @@ open class TestCase: NSObject {
 
   }
 }
-
-#endif

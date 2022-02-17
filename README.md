@@ -1,4 +1,4 @@
-[![Swift](https://github.com/Losiowaty/PlaygroundTester/actions/workflows/swift.yml/badge.svg?branch=main)](https://github.com/Losiowaty/PlaygroundTester/actions/workflows/swift.yml) &nbsp;&nbsp;&nbsp; [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
+[![Swift](https://github.com/Losiowaty/PlaygroundTester/actions/workflows/swift.yml/badge.svg?branch=main)](https://github.com/Losiowaty/PlaygroundTester/actions/workflows/swift.yml) &nbsp;&nbsp;&nbsp; [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FLosiowaty%2FPlaygroundTester%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/Losiowaty/PlaygroundTester) &nbsp;&nbsp;&nbsp; [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FLosiowaty%2FPlaygroundTester%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/Losiowaty/PlaygroundTester) &nbsp;&nbsp;&nbsp; [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
 
 # PlaygroundTester
 

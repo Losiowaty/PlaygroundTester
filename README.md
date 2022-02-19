@@ -18,6 +18,13 @@ For `PlaygroundTester` to find and properly execute tests your test class needs 
 
 At this momment inheriting from another test class is **not supported** (so you cannot create a `class BaseTests: TestCase` that you will then inherit other test classes from).
 
+Sample test class declaration :
+```swift
+@objcMembers
+final class MyTests: TestCase {
+}
+```
+
 #### setUp / tearDown
 You can override four methods to help with setting up and cleaning up after your tests.
 ```swift

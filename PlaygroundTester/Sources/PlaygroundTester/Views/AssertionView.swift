@@ -30,7 +30,7 @@ struct AssertionView: View {
       leading: 5,
       bottom: self.showingFullDiff ? 0 : 10,
       trailing: 5))
-    .background(content: { Color.white })
+    .background(.background)
     .onTapGesture {
       withAnimation {
         self.showingFullDiff.toggle()

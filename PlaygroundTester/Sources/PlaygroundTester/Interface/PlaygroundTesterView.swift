@@ -1,24 +1,28 @@
-#if TESTING_ENABLED
-
 import SwiftUI
 
 public struct PlaygroundTesterView<Content: View>: View {
   let content: Content
+    
+  private var isTesting: Bool {
+    #if TESTING_ENABLED
+      return PlaygroundTesterConfigurator.isTesting
+    #else
+      return false
+    #endif
+  }
 
   public init(@ViewBuilder content: () -> Content) {
     self.content = content()
   }
 
   public var body: some View {
-    if PlaygroundTesterConfigurator.isTesting {
+    if isTesting {
       TestingView()
     } else {
       content
     }
   }
 }
-
-#endif
 
 public enum PlaygroundTesterConfigurator {
   public static var isTesting = false

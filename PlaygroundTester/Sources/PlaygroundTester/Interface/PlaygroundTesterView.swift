@@ -2,13 +2,24 @@
 
 import SwiftUI
 
-public struct PlaygroundTesterView: View {
+public struct PlaygroundTesterView<Content: View>: View {
+  let content: Content
 
-  public init() {}
+  public init(@ViewBuilder content: () -> Content) {
+    self.content = content()
+  }
 
   public var body: some View {
-    TestingView()
+    if PlaygroundTesterConfigurator.isTesting {
+      TestingView()
+    } else {
+      content
+    }
   }
 }
 
 #endif
+
+public enum PlaygroundTesterConfigurator {
+  public static var isTesting = false
+}

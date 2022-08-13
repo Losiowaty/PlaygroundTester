@@ -10,9 +10,16 @@ import PlaygroundTester
 
 @main
 struct PlaygroundTesterDemoAppApp: App {
+    
+    init() {
+        PlaygroundTester.PlaygroundTesterConfigurator.isTesting = true
+    }
+    
     var body: some Scene {
         WindowGroup {
-          PlaygroundTester.PlaygroundTesterView()
+            PlaygroundTester.PlaygroundTesterView {
+                Text("isTesting is false")
+            }
         }
     }
 }

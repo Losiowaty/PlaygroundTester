@@ -134,7 +134,7 @@ func testSampleExpectation() {
 At this moment unwaited expectations don't trigger an assertion failure.
 
 ### Runing tests
-In order to execute your tests you need to do one final thing : Set `isTesting` flag to `true` and prepare for `PlaygroundTesterView`.
+In order to execute your tests you need to do one final thing : Wrap your view in PlaygroundTesterView and set PlaygroundTester.PlaygroundTesterConfiguration.isTesting flag to true.
 In your `App` object just do this : 
 
 ```swift

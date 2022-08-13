@@ -12,7 +12,7 @@ import PlaygroundTester
 struct PlaygroundTesterDemoAppApp: App {
     
     init() {
-        PlaygroundTester.PlaygroundTesterConfigurator.isTesting = true
+        PlaygroundTester.PlaygroundTesterConfiguration.isTesting = true
     }
     
     var body: some Scene {

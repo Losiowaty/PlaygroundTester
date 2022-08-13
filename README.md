@@ -140,7 +140,7 @@ In your `App` object just do this :
 ```swift
 struct Myapp: App {
     init() {
-        PlaygroundTester.PlaygroundTesterConfigurator.isTesting = true
+        PlaygroundTester.PlaygroundTesterConfiguration.isTesting = true
     }
     var body: some Scene {
         WindowGroup {

@@ -5,7 +5,7 @@ public struct PlaygroundTesterView<Content: View>: View {
     
   private var isTesting: Bool {
     #if TESTING_ENABLED
-      return PlaygroundTesterConfigurator.isTesting
+      return PlaygroundTesterConfiguration.isTesting
     #else
       return false
     #endif
@@ -24,6 +24,6 @@ public struct PlaygroundTesterView<Content: View>: View {
   }
 }
 
-public enum PlaygroundTesterConfigurator {
+public enum PlaygroundTesterConfiguration {
   public static var isTesting = false
 }

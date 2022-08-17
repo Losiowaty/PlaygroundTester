@@ -144,7 +144,7 @@ struct Myapp: App {
     }
     var body: some Scene {
         WindowGroup {
-          PlaygroundTester.PlaygroundTesterView {
+          PlaygroundTester.PlaygroundTesterWrapperView {
             // YourContentView()
           }
         }

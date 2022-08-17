@@ -1,29 +1,15 @@
+#if TESTING_ENABLED
+
 import SwiftUI
 
-public struct PlaygroundTesterView<Content: View>: View {
-  let content: Content
-    
-  private var isTesting: Bool {
-    #if TESTING_ENABLED
-      return PlaygroundTesterConfiguration.isTesting
-    #else
-      return false
-    #endif
-  }
+@available(*, deprecated, message: "This view is being deprecated - please switch to `PlaygroundTesterWrapperView` and refer to Readme on new appraoach. This view may be removed in future versions.")
+public struct PlaygroundTesterView: View {
 
-  public init(@ViewBuilder content: () -> Content) {
-    self.content = content()
-  }
+  public init() {}
 
   public var body: some View {
-    if isTesting {
-      TestingView()
-    } else {
-      content
-    }
+    TestingView()
   }
 }
 
-public enum PlaygroundTesterConfiguration {
-  public static var isTesting = false
-}
+#endif

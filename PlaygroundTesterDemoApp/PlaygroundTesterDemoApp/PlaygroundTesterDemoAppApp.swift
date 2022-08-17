@@ -17,7 +17,7 @@ struct PlaygroundTesterDemoAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            PlaygroundTester.PlaygroundTesterView {
+            PlaygroundTester.PlaygroundTesterWrapperView {
                 Text("isTesting is false")
             }
         }

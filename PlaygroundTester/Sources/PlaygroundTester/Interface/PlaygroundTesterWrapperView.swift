@@ -17,7 +17,9 @@ public struct PlaygroundTesterWrapperView<Content: View>: View {
 
   public var body: some View {
     if isTesting {
-      TestingView()
+      #if TESTING_ENABLED
+        TestingView()
+      #endif
     } else {
       content
     }
